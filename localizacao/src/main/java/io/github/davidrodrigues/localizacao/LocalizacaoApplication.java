@@ -20,19 +20,43 @@ public class LocalizacaoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Iniciando projeto!");
 
-		listarCidades();
+		//listarCidades();
+		findCidadePorNome();
+		System.out.println("\n");
+		findCidadePorHabitantes();
 
 
 	}
 	@Transactional
 	void salvarCidade(){
 
+	}
+	void findCidadePorNome(){
+		var cidade = cidadeRepository.findByNome("Fortaleza");
+		System.out.println(cidade);
+
+		cidadeRepository.findByNomeStartingWith("Sal").forEach(System.out::println);
+		System.out.println("\n");
+		cidadeRepository.findByNomeEndingWith("leza").forEach(System.out::println);
+		System.out.println("\n");
+		cidadeRepository.findByNomeContaining("to").forEach(System.out::println);
+		System.out.println("\n");
+		cidadeRepository.findByNomeLike("%a%").forEach(System.out::println);
 
 	}
-	void listarCidades(){
-		cidadeRepository.findAll().forEach(System.out::println);
+
+	void findCidadePorHabitantes(){
+		var cidade = cidadeRepository.findByHabitantes(400000L);
+		System.out.println(cidade);
 
 	}
+
+
+
+//	void listarCidades(){
+//		cidadeRepository.findAll().forEach(System.out::println);
+//
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(LocalizacaoApplication.class, args);

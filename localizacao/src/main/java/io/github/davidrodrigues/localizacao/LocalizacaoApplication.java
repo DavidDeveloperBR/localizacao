@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.xml.transform.sax.SAXSource;
 import java.util.List;
 
 @SpringBootApplication
@@ -21,8 +22,12 @@ public class LocalizacaoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Iniciando projeto!");
 
-		service.findCidadePorNome();
+//		service.findCidadePorNome();
+//		System.out.println("Filtro dinamico \n");
+//		var cidade = new Cidade(null, "porto", null);
+//		service.filtroDinamico(cidade).forEach(System.out::println);
 
+		service.listarCidadesByNomeSpec();
 
 
 	}

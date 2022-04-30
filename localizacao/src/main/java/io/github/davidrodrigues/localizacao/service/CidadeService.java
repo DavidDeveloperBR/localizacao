@@ -45,6 +45,10 @@ public class CidadeService {
 //        Pageable pageable = PageRequest.of(1, 2);
 //        repository.findByNomeLike("%%%%", pageable).forEach(System.out::println);
 
+        repository.findByNomeSqlNative("Rio de Janeiro").
+                stream().map(cidadeProjection -> new Cidade(cidadeProjection.getId(), cidadeProjection.getNome(), null))
+                .forEach(System.out::println);
+
 
 
     }
